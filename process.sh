@@ -4,4 +4,4 @@ cat $1 | awk -F , 'NF>0{print tolower($7),$2}' | sort | uniq | awk '{print $1}' 
 
 cat $1 | grep -Ei "holiday inn|hilton" | awk -F , -f script2.awk
 
-gnuplot script.p
+gnuplot script_plot.p
