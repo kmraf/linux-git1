@@ -3,7 +3,7 @@
 USERNAME=$1
 REPO="datamove/linux-git2"
 API_URL="https://api.github.com"
-TEMP_FILE="/home/users/kmraf/pulls_data.json"
+TEMP_FILE="/tmp/pulls_data_kmraf.json"
 PAGE=1
 TOKEN="Authorization: token "`cat public_repo_token`
 
