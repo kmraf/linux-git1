@@ -4,6 +4,7 @@ USERNAME=$1
 REPO="datamove/linux-git2"
 API_URL="https://api.github.com"
 TEMP_FILE="/tmp/pulls_data_kmraf.json"
+rm -f "$TEMPFILE"
 PAGE=1
 TOKEN="Authorization: token "`cat "/home/users/kmraf/public_repo_token"`
 
@@ -34,3 +35,5 @@ if [[ ("$MERG_FLAG" != "null") &&  ("$MERG_FLAG" == "true") ]]; then
 else
     echo "MERGED 0"
 fi
+rm -f "$TEMPFILE"
+
