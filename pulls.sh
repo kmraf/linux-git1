@@ -5,8 +5,7 @@ REPO="datamove/linux-git2"
 API_URL="https://api.github.com"
 TEMP_FILE="/tmp/pulls_data_kmraf.json"
 PAGE=1
-TOKEN="Authorization: token "`cat public_repo_token`
-
+TOKEN="Authorization: token "`cat "/home/users/kmraf/public_repo_token"`
 
 while true; do
 
@@ -21,7 +20,7 @@ done
 
 #https://unix.stackexchange.com/questions/600765/how-to-sum-the-number-of-json-elements-in-documents-inside-a-directory-using-jq
 #-s for array
-PULLS=$(<$TEMP_FILE)
+PULLS=$(<"$TEMP_FILE")
 NUM_PULLS=$(echo "$PULLS" | jq -s 'length')
 echo "PULLS $NUM_PULLS"
 
