@@ -29,7 +29,7 @@ EARL_NUM=$(echo "$EARLIEST_PR" | jq '.number')
 echo "EARLIEST $EARL_NUM"
 
 MERG_FLAG=$(echo "$EARLIEST_PR" | jq '.merged')
-if [ "$MERG_FLAG" == "true" ]; then
+if [[ ("$MERG_FLAG" != "null") &&  ("$MERG_FLAG" == "true") ]]; then
     echo "MERGED 1"
 else
     echo "MERGED 0"
