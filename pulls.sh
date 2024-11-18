@@ -29,8 +29,8 @@ EARLIEST_PR=$(echo "$PULLS" | jq -s 'sort_by(.created_at) | .[0]')
 EARL_NUM=$(echo "$EARLIEST_PR" | jq '.number')
 echo "EARLIEST $EARL_NUM"
 
-MERG_FLAG=$(echo "$EARLIEST_PR" | jq '.merged_at != "null"')
-if [ "$MERG_FLAG" == "true" ]; then
+MERG_FLAG=$(echo "$EARLIEST_PR" | jq '.merged_at')
+if [ "$MERG_FLAG" != "null" ]; then
     echo "MERGED 1"
 else
     echo "MERGED 0"
