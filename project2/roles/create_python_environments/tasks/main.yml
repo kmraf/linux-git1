@@ -8,10 +8,10 @@
 
 - name: Create Python virtual environments
   shell: |
-    python3 -m venv {{ item }}
+    python3 -m venv {{ item.env_path }}
   loop: "{{ python_envs }}"
   args:
-    creates: "{{ item }}/bin/activate"
+    creates: "{{ item.env_path }}/bin/activate"
 
 - name: Install packages in each environment
   pip:
