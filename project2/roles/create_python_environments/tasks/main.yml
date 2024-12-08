@@ -1,4 +1,4 @@
-- name: Install Python 3 and pip
+- name: Install Python and pip
   apt:
     name:
       - python3
