@@ -1,18 +1,25 @@
-pyenv_path: "{{ lookup('env', 'HOME') }}/.pyenv"
-virtualenvs_path: "{{ lookup('env', 'HOME') }}/.virtualenvs"
-
-python_versions:
-  - "3.8.10"
-  - "3.9.7"
-
-virtualenvs:
-  - name: "web_dev_env"
-    python_version: "3.8.10"
+ansible_user: ubuntu
+python_envs:
+  - env_name: "env_ds_core"
+    env_path: "/home/{{ ansible_user }}/env_ds_core"
     packages:
-      - "requests"
-      - "flask"
-  - name: "ds_env"
-    python_version: "3.9.7"
+      - numpy
+      - pandas
+      - matplotlib
+      - scikit-learn
+      - seaborn
+      - scipy
+      - jupyter
+  - env_name: "env_dl"
+    env_path: "/home/{{ ansible_user }}/env_dl"
     packages:
-      - "numpy"
-      - "pandas"
+      - tensorflow
+      - keras
+      - torch
+      - torchvision
+  - env_name: "env_nlp"
+    env_path: "/home/{{ ansible_user }}/env_nlp"
+    packages:
+      - spacy
+      - transformers
+      - nltk
