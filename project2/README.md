@@ -4,22 +4,3 @@
 
 Если хочется позапускать и пописать какие-то проекты на виртуальной машине, то этот
 проект может быть полезен для её конфигурации.
-
-Структура директорий:
-
-project2/
-├── ansible.cfg
-├── ansible.log
-├── ansible.sh     #for launch 
-├── hosts          #inventory
-├── playbook.yml   #main playbook 
-├── roles/
-│    └──  create_python_environments/
-│       ├── tasks/
-│       │   └── main.yml  #main tasks for setting up environments
-│       └── vars/
-│           └── main.yml  #define envs and packages 
-│             
-└── README.md    
-
-
