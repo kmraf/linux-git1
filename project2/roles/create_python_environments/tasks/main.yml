@@ -16,11 +16,16 @@
     line: 'export PYENV_ROOT="{{ pyenv_path }}"'
     create: yes
 
+- name: Get installed python versions using pyenv
+  command:
+    cmd: "{{ pyenv_path }}/bin/pyenv versions --bare"
+  register: pyenv_versions
+
 - name: Install Python versions using pyenv
   command:
     cmd: "{{ pyenv_path }}/bin/pyenv install {{ item }}"
   loop: "{{ python_versions }}"
-  when: item not in lookup('command', "{{ pyenv_path }}/bin/pyenv versions --bare").stdout_lines
+  when: "'{{ item }}' not in pyenv_versions.stdout_lines"
 
 - name: Create virtual environments
   command:
