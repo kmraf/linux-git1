@@ -7,10 +7,6 @@ python_envs:
       - pandas
       - matplotlib
       - scikit-learn
-  - env_name: "env_dl"
-    env_path: "/home/{{ ansible_user }}/env_dl"
-    packages:
-      - tensorflow
   - env_name: "env_nlp"
     env_path: "/home/{{ ansible_user }}/env_nlp"
     packages:
