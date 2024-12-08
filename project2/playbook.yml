@@ -1,3 +1,4 @@
-- hosts: yc_vm
+- name: create python virtual environments
+  hosts: yc_vm
   roles:
-   - ds_env
+    - create_python_environments
