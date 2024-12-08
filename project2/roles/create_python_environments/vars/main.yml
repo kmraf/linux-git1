@@ -1,0 +1,15 @@
+ansible_user: "ubuntu"
+python_environments:
+  - name: "webdev_env"
+    python_version: "3.8"
+    packages:
+      - "django"
+      - "requests"
+      - "flask"
+      - "pytest"
+  - name: "ds_env"
+    python_version: "3.9"
+    packages:
+      - "pandas"
+      - "matplotlib"
+      - "numpy"
