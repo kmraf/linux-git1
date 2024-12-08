@@ -1,15 +1,18 @@
-ansible_user: "ubuntu"
-python_venvs:
-  - name: "webdev_env"
-    python_version: "3.8"
+pyenv_path: "{{ lookup('env', 'HOME') }}/.pyenv"
+virtualenvs_path: "{{ lookup('env', 'HOME') }}/.virtualenvs"
+
+python_versions:
+  - "3.8.10"
+  - "3.9.7"
+
+virtualenvs:
+  - name: "web_dev_env"
+    python_version: "3.8.10"
     packages:
-      - "django"
       - "requests"
       - "flask"
-      - "pytest"
   - name: "ds_env"
-    python_version: "3.9"
+    python_version: "3.9.7"
     packages:
-      - "pandas"
-      - "matplotlib"
       - "numpy"
+      - "pandas"
