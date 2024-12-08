@@ -42,7 +42,6 @@
     pyenv activate {{ item.python_version }}
     python -m venv /home/{{ ansible_user }}/.virtualenvs/{{ item.name }}
   with_items: "{{ python_virtualenvs }}"
-  creates: "/home/{{ ansible_user }}/.virtualenvs/{{ item.name }}"
 
 - name: Install required packages in the virtual environment
   pip:
