@@ -1,1 +1,14 @@
-virtualenv_name: "data_science_env"
+python_environments:
+  - name: "webdev_env"
+    python_version: "3.8"
+    packages:
+      - "django"
+      - "requests"
+      - "flask"
+      - "pytest"
+  - name: "ds_env"
+    python_version: "3.9"
+    packages:
+      - "pandas"
+      - "matplotlib"
+      - "numpy"
