@@ -1,39 +1,31 @@
-- name: Install Pyenv
-  git:
-    repo: "https://github.com/pyenv/pyenv.git"
-    dest: "{{ pyenv_path }}"
-    version: "master"
+- name: Install Python 3 and pip
+  apt:
+    name:
+      - python3
+      - python3-pip
+      - python3-venv
+    state: present
 
-- name: Add pyenv to shell profile
-  lineinfile:
-    path: "{{ lookup('env', 'HOME') }}/.bashrc"
-    line: 'export PATH="{{ pyenv_path }}/bin:$PATH"'
-    create: yes
+- name: Create Python virtual environments
+  shell: |
+    python3 -m venv {{ item }}
+  loop: "{{ python_envs }}"
+  args:
+    creates: "{{ item }}/bin/activate"
 
-- name: Initialize pyenv in the shell
-  lineinfile:
-    path: "{{ lookup('env', 'HOME') }}/.bashrc"
-    line: 'export PYENV_ROOT="{{ pyenv_path }}"'
-    create: yes
-
-- name: Get installed python versions using pyenv
-  command:
-    cmd: "{{ pyenv_path }}/bin/pyenv versions --bare"
-  register: pyenv_versions
-
-- name: Install Python versions using pyenv
-  command:
-    cmd: "{{ pyenv_path }}/bin/pyenv install {{ item }}"
-  loop: "{{ python_versions }}"
-  when: "'{{ item }}' not in pyenv_versions.stdout_lines"
-
-- name: Create virtual environments
-  command:
-    cmd: "{{ pyenv_path }}/versions/{{ item.python_version }}/bin/python -m venv {{ virtualenvs_path }}/{{ item.name }}"
-  loop: "{{ virtualenvs }}"
-
-- name: Install Python packages in virtual environment
+- name: Install packages in each environment
   pip:
     name: "{{ item.packages }}"
-    virtualenv: "{{ virtualenvs_path }}/{{ item.name }}"
-  loop: "{{ virtualenvs }}"
+    virtualenv: "{{ item.env_path }}"
+  loop: "{{ python_envs }}"
+
+- name: Install Jupyter in the main environment
+  pip:
+    name: jupyter
+    virtualenv: "{{ python_envs[0].env_path }}"
+
+- name: Create symbolic link for Jupyter
+  file:
+    src: "{{ python_envs[0].env_path }}/bin/jupyter"
+    dest: "/usr/local/bin/jupyter"
+    state: link
