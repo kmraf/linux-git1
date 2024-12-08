@@ -10,7 +10,7 @@ python_envs:
   - env_name: "env_dl"
     env_path: "/home/{{ ansible_user }}/env_dl"
     packages:
-      - torch
+      - tensorflow
   - env_name: "env_nlp"
     env_path: "/home/{{ ansible_user }}/env_nlp"
     packages:
