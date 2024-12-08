@@ -1,0 +1,32 @@
+- name: Update apt cache
+  apt:
+    update_cache: yes
+
+- name: Install Python and dependencies
+  apt:
+    name:
+      - python3
+      - python3-pip
+      - python3-venv
+    state: present
+
+- name: Create a virtual environment
+  command: python3 -m venv /opt/{{ virtualenv_name }}
+  args:
+    creates: /opt/{{ virtualenv_name }}
+
+- name: Copy requirements.txt to the remote host
+  copy:
+    src: requirements.txt
+    dest: /opt/{{ virtualenv_name }}/requirements.txt
+
+- name: Install Python packages in the virtual environment
+  pip:
+    requirements: /opt/{{ virtualenv_name }}/requirements.txt
+    virtualenv: /opt/{{ virtualenv_name }}
+
+- name: Create symlink for Jupyter
+  file:
+    src: /opt/{{ virtualenv_name }}/bin/jupyter
+    dest: /usr/local/bin/jupyter
+    state: link
