@@ -7,14 +7,9 @@ python_envs:
       - pandas
       - matplotlib
       - scikit-learn
-      - seaborn
-      - scipy
-      - jupyter
   - env_name: "env_dl"
     env_path: "/home/{{ ansible_user }}/env_dl"
     packages:
-      - tensorflow
-      - keras
       - torch
       - torchvision
   - env_name: "env_nlp"
