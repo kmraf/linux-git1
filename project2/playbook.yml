@@ -1,0 +1,3 @@
+- hosts: yc_vm
+  roles:
+   - ds_env
