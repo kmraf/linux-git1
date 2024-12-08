@@ -1,0 +1,21 @@
+2024-12-08 21:23:02,851 p=1666629 u=kmraf n=ansible | PLAY [create python virtual environments] ***********************************************************************>
+2024-12-08 21:23:02,868 p=1666629 u=kmraf n=ansible | TASK [Gathering Facts] ******************************************************************************************>
+2024-12-08 21:23:06,491 p=1666629 u=kmraf n=ansible | [WARNING]: Platform linux on host 84.201.144.105 is using the discovered Python interpreter at /usr/bin/python3.1>
+future installation of another Python interpreter could change the meaning of that path. See
+https://docs.ansible.com/ansible-core/2.17/reference_appendices/interpreter_discovery.html for more information.
+
+2024-12-08 21:23:06,492 p=1666629 u=kmraf n=ansible | ok: [84.201.144.105]
+2024-12-08 21:23:06,496 p=1666629 u=kmraf n=ansible | TASK [create_python_environments : Install Python and pip] ******************************************************>
+2024-12-08 21:23:11,215 p=1666629 u=kmraf n=ansible | ok: [84.201.144.105]
+2024-12-08 21:23:11,221 p=1666629 u=kmraf n=ansible | TASK [create_python_environments : Create Python virtual environments] ******************************************>
+2024-12-08 21:23:11,851 p=1666629 u=kmraf n=ansible | ok: [84.201.144.105] => (item={'env_name': 'env_ds_core', 'env_path': '/home/ubuntu/env_ds_core', 'packages': ['n>
+2024-12-08 21:23:12,359 p=1666629 u=kmraf n=ansible | ok: [84.201.144.105] => (item={'env_name': 'env_nlp', 'env_path': '/home/ubuntu/env_nlp', 'packages': ['spacy', '>
+2024-12-08 21:23:12,364 p=1666629 u=kmraf n=ansible | TASK [create_python_environments : Install packages in each environment] ****************************************>
+2024-12-08 21:23:14,512 p=1666629 u=kmraf n=ansible | ok: [84.201.144.105] => (item={'env_name': 'env_ds_core', 'env_path': '/home/ubuntu/env_ds_core', 'packages': ['n>
+2024-12-08 21:23:17,226 p=1666629 u=kmraf n=ansible | ok: [84.201.144.105] => (item={'env_name': 'env_nlp', 'env_path': '/home/ubuntu/env_nlp', 'packages': ['spacy', '>
+2024-12-08 21:23:17,231 p=1666629 u=kmraf n=ansible | TASK [create_python_environments : Install Jupyter in the main environment] *************************************>
+2024-12-08 21:23:20,564 p=1666629 u=kmraf n=ansible | ok: [84.201.144.105]
+2024-12-08 21:23:20,570 p=1666629 u=kmraf n=ansible | TASK [create_python_environments : Create symbolic link for Jupyter] ********************************************>
+2024-12-08 21:23:21,273 p=1666629 u=kmraf n=ansible | ok: [84.201.144.105]
+2024-12-08 21:23:21,279 p=1666629 u=kmraf n=ansible | PLAY RECAP ******************************************************************************************************>
+2024-12-08 21:23:21,279 p=1666629 u=kmraf n=ansible | 84.201.144.105             : ok=6    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=>
